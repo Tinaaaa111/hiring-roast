@@ -1,37 +1,16 @@
 import { NextResponse } from "next/server";
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+import { supabase } from "@/lib/supabase";
 
 export async function POST(req: Request) {
   try {
-    const { answers } = await req.json();
+    const { email } = await req.json();
 
-    const prompt = `
-        Roast their hiring process in a funny, sarcastic tone.
-        Make it feel personal but not mean. Keep it under 3 sentences.
-        Answers from user:
-        - Screening method: ${answers.screening}
-        - Hiring speed: ${answers.hiringTime}
-        - Rejection reason: ${answers.rejectionReason}
-    `;
+    const { error } = await supabase.from("signups").insert([{ email }]);
+    
+    if (error) throw error;
 
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
-    });
-
-    const roast =
-      completion.choices?.[0]?.message?.content || "AI malfunction 💀";
-
-    return NextResponse.json({ roast });
-  } catch (error) {
-    console.error("🔥 API ERROR:", error);
-    return NextResponse.json(
-      { error: "API failed — check env variable" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    return NextResponse.json({ error: "Signup failed" }, { status: 500 });
   }
 }

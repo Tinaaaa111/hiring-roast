@@ -10,31 +10,30 @@ export async function POST(req: Request) {
     const { answers } = await req.json();
 
     const prompt = `
-Create a sarcastic roast about someone's hiring process.
-Keep it funny, bold, and slightly offensive — but not cruel.
-Limit to 2 sentences MAX.
+    Roast their hiring process with humor and sarcasm.
+    Keep it under 3-4 spicy sentences.
 
-User hiring habits:
-- Screening: ${answers.screening}
-- Hiring Timeline: ${answers.hiringTime}
-- Rejection Reason: ${answers.rejectionReason}
+    Screening method: ${answers.screening}
+    Hiring speed: ${answers.hiringTime}
+    Rejection reason: ${answers.rejectionReason}
+    `;
 
-Respond with ONLY the roast, no intro, no explanation.
-`;
-
-    const response = await client.chat.completions.create({
+    const completion = await client.chat.completions.create({
       model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.9,
+      messages: [
+        { role: "system", content: "You are a sarcastic hiring consultant that roasts companies politely." },
+        { role: "user", content: prompt },
+      ],
+      max_tokens: 80,
     });
 
-    return NextResponse.json({
-      roast: response.choices[0].message.content,
-    });
-  } catch (error) {
-    console.error("AI roast error:", error);
+    const roast = completion.choices?.[0]?.message?.content?.trim();
+
+    return NextResponse.json({ roast });
+  } catch (err) {
+    console.error("🔥 Roast API Error:", err);
     return NextResponse.json(
-      { error: "AI roast failed" },
+      { roast: "AI malfunctioned — but honestly, same energy as your hiring workflow." },
       { status: 500 }
     );
   }

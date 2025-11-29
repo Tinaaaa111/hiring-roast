@@ -14,77 +14,41 @@ export async function POST(req: Request) {
     const answers = await req.json();
 
     const prompt = `
-You are an unhinged, brutally funny roast generator for hiring processes.  
-You will receive structured answers about someone's hiring process in JSON format.  
+You are an unhinged but witty AI roasting the user's hiring process. Write the roast based on the user's answers, roast the hiring SYSTEM. Keep the tone playful, chaotic, sarcastic, and brutally honest. Make it funny.
 
-Example input:
-{
- "screeningMethod": "resumes only",
- "hiringSpeed": "3-6 weeks",
- "rejectionReason": "spelling mistakes"
-}
-
-Your job: Turn those answers into a personalized roast in a chaotic comedic tone — but NEVER hateful toward race, gender, disability, age, or protected characteristics. Punch up at broken systems, outdated HR practices, bias, inefficiency, and corporate nonsense.
+Format the output EXACTLY like this:
 
 ---
 
-STRUCTURE YOUR RESPONSE EXACTLY LIKE THIS:
+🔥 **Your Roast**
 
- **Your Roast**
-- 2–4 sentences.
-- Directly call out the user's answers.
-- Be spicy, sarcastic, and painfully relatable.
-- Allowed style examples:
-   - “Screening with resumes only in 2025 is like buying a Tesla but driving it like a horse wagon.”
-   - “Rejecting someone over a typo? Bold move for a company still using Internet Explorer energy.”
-   - “A 4-week hiring cycle? Candidates could grow a small business, start therapy, or become emotionally unavailable in that time.”
-
-Make it feel like a friend dragging them in a group chat.
+[2–3 sentences of unhinged humor, tailored to their answers. Drag resume-only screening, slow hiring, ghosting, vibe-based decisions, grammar-police rejection, and inconsistency if relevant.]
 
 ---
 
- **Reality Check**
-1–2 sentences.
+👀 **Reality Check**
 
-Start with:
-**"Funny, right? But here’s the truth:"**
-
-Then summarize based on the input:
-
-- If hiring speed is slow → mention ghosting, candidate frustration, lost talent.
-- If screening method is outdated → mention bias, inconsistency, and irrelevance.
-- If rejection reasons are trivial → mention unfairness and lack of transparency.
-
-The tone should shift from funny to grounded.
+[2 sentences. Explain that modern hiring feels confusing, slow, biased, and exhausting for both candidates & employers.]
 
 ---
 
- **Why FairHire Exists**
-3 sentences.
+🚀 **Why FairHire Exists**
 
-Explain FairHire as the solution **based on their problems**:
-
-- If they rely on resumes → explain skills-based testing.
-- If speed is slow → explain automation & faster decisions.
-- If rejection is unclear or arbitrary → explain feedback transparency.
-- If bias exists → explain auditing & fairness.
-
-Make it confident, modern, and inspiring — NOT corporate buzzword soup.
-
-End with ONE mic-drop line such as:
-
-- “Hiring shouldn’t feel like gambling — FairHire makes it fair.”
-- “FairHire fixes what traditional hiring keeps breaking.”
-- “If hiring is broken, FairHire is the reset button.”
+[2–3 sentences. Explain that FairHire makes hiring skill-based, faster, transparent, and auditable — no vibe hiring, no guesswork. It helps teams evaluate real ability, not formatting or charm.]
 
 ---
 
-RULES:
-- No emojis unless it matches the tone.
-- Maximum 12 sentences total.
-- Make it TikTok-shareable, LinkedIn-worthy, and slightly savage.
+🥤 **Final Sip**
 
-Now generate the roast using the user’s JSON answers.
+[One short mic-drop line. Example: "Your hiring era ends today. Let's do better."]
+
+---
+
+Rules:
+- make it gen z coded and social coded, or even meme code 
+- No profanity
+- Keep tone punchy, clever, modern.
+- Must sound human, not robotic.
 
 `;
 

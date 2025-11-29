@@ -8,6 +8,15 @@ export default function RoastPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  const copyRoast = async () => {
+    try {
+      await navigator.clipboard.writeText(roast);
+      alert("Copied. Now go emotionally damage a hiring manager 🤭");
+    } catch {
+      alert("Copy failed — screenshot it like it’s 2008 📸");
+    }
+  };
+
   useEffect(() => {
     const stored = localStorage.getItem("hiringRoastAnswers");
     if (!stored) {
@@ -26,62 +35,45 @@ export default function RoastPage() {
       .then((data) => {
         setRoast(
           data.roast ||
-            "AI tapped out… even it couldn't process your hiring chaos 😂"
+            "AI malfunctioned. Probably traumatized by your hiring process 😵‍💫"
         );
         setLoading(false);
       })
       .catch(() => {
-        setRoast("Something broke — probably your hiring system again 😬");
+        setRoast("Something broke. Probably HR's fault again 😬");
         setLoading(false);
       });
   }, [router]);
 
-  const copyRoast = async () => {
-    await navigator.clipboard.writeText(roast);
-    alert("Copied! Paste and share your humiliation proudly 💀");
-  };
-
-  const copyLink = async () => {
-    await navigator.clipboard.writeText(window.location.href);
-    alert("Link copied — now go roast someone else 🔥");
-  };
-
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-xl font-semibold">
-        🔥 Roasting your hiring… sit tight.
+      <div className="min-h-screen flex items-center justify-center bg-white text-xl font-semibold">
+        🔥 Generating your roast… prepare yourself.
       </div>
     );
   }
 
   return (
     <div className="min-h-screen flex justify-center items-center px-6 py-10 bg-gray-50">
-      <div className="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-lg text-center space-y-6">
-        <h1 className="text-3xl font-bold">🔥 Your Personalized Roast</h1>
+      <div className="w-full max-w-2xl bg-white p-10 rounded-2xl shadow-lg text-center">
 
-        <p className="text-lg text-gray-800 leading-relaxed whitespace-pre-line">
+        <h1 className="text-3xl font-bold mb-6">🔥 Your Personalized Roast</h1>
+
+        <div className="text-left text-lg text-gray-800 leading-relaxed whitespace-pre-line">
           {roast}
-        </p>
+        </div>
 
-        {/* Button Stack */}
-        <div className="flex flex-col gap-3 w-full">
+        <div className="flex flex-col gap-4 mt-10">
           <button
             onClick={copyRoast}
-            className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg transition"
+            className="w-full py-4 rounded-xl bg-[#F6E8C3] text-gray-900 font-medium hover:bg-[#EEDDAA] transition"
           >
-            📋 Copy Roast
-          </button>
-
-          <button
-            onClick={copyLink}
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition"
-          >
-            🔗 Copy Link
+            📝 Copy Roast
           </button>
 
           <button
             onClick={() => router.push("/signup")}
-            className="w-full bg-red-500 hover:bg-red-600 text-white py-3 text-lg font-semibold rounded-lg transition"
+            className="w-full py-4 rounded-xl bg-[#FF5D5F] text-white font-semibold hover:bg-[#E44C4E] transition"
           >
             Okay fine… Fix my hiring 👀
           </button>

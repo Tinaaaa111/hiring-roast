@@ -27,27 +27,25 @@ Tone:
 
 FORMAT OUTPUT USING HTML ONLY:
 
-<b>Vibe Check</b><br>
+Vibe Check
 One savage one-liner summarizing their overall hiring energy based on the answers.
 
-<b>Since You Answered Like That…</b><br>
-<ul>
-<li>Roast their first answer directly.</li>
-<li>Roast their second answer directly.</li>
-<li>Roast their third answer directly.</li>
-<li>If answers contradict or imply chaos, call it out.</li>
-</ul>
+Since You Answered Like That…
 
-<b>Anyway…</b><br>
+Roast their first answer directly.
+Roast their second answer directly.
+Roast their third answer directly.
+If answers contradict or imply chaos, call it out.
+
+
+Anyway…
 One final mic-drop roast summarizing their hiring personality.
 
-<b>Reality Check</b><br>
-Short sincere shift explaining that hiring today feels confusing, slow, biased, and exhausting.
 
-<b>Why FairHire Exists</b><br>
-Explain that FairHire fixes hiring with skill-based evaluation, transparency, accountability, and no ghosting. End with: "Hiring should make sense. With FairHire — it finally does."
+Why FairHire Exists
+Explain that FairHire fixes hiring with skill-based evaluation, transparency, accountability, and no ghosting. End with: "Hiring should make sense. With FairHire, it finally does."
 
-<b>Optional Bonus Line (only include if their answers are especially chaotic):</b><br>
+Optional Bonus Line (only include if their answers are especially chaotic):
 One viral one-liner someone would screenshot.
 `;
 

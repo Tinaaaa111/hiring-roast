@@ -1,18 +1,19 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import html2canvas from "html2canvas";
 
 export default function RoastPage() {
   const [roast, setRoast] = useState("");
   const [loading, setLoading] = useState(true);
-  const [copyMessage, setCopyMessage] = useState("");
-  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [shareLoading, setShareLoading] = useState(false);
   const router = useRouter();
+  const cardRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("hiringRoastAnswers");
+
     if (!stored) {
       router.push("/quiz");
       return;
@@ -20,6 +21,7 @@ export default function RoastPage() {
 
     const answers = JSON.parse(stored);
 
+    // Fetch roast from API
     fetch("/api/roast", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -29,55 +31,61 @@ export default function RoastPage() {
       .then((data) => {
         setRoast(
           data.roast ||
-            "AI malfunction detected. Your hiring process broke reality. 💀"
+            "The AI malfunctioned — probably traumatized by your hiring process 😬"
         );
         setLoading(false);
       })
       .catch(() => {
-        setRoast("Something exploded. Probably your hiring logic again 😬");
+        setRoast(
+          "Something broke… which honestly matches your hiring workflow 💀"
+        );
         setLoading(false);
       });
   }, [router]);
 
-  // 🚀 SHARE FUNCTION
+  // SHARE HANDLER
   const shareRoast = async () => {
-    try {
-      if (!cardRef.current) return;
+    if (!cardRef.current) return;
 
-      // Create screenshot
+    try {
+      setShareLoading(true);
+
+      // Capture screenshot
       const canvas = await html2canvas(cardRef.current);
       const image = canvas.toDataURL("image/png");
 
-      // 📱 If device supports Web Share
-      if (navigator.share) {
+      const res = await fetch(image);
+      const blob = await res.blob();
+      const file = new File([blob], "hiring-roast.png", { type: "image/png" });
+
+      // Mobile Web Share Support
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
-          title: "🔥 Hiring Roast",
-          text: "I just got roasted by an AI about my hiring process 😭",
-          files: [
-            new File(
-              [await (await fetch(image)).arrayBuffer()],
-              "roast.png",
-              { type: "image/png" }
-            ),
-          ],
+          title: "Hiring Roast",
+          text: "I just got roasted by an AI about my hiring… and I deserved it 😂",
+          files: [file],
         });
-        return;
+      } else {
+        // Desktop fallback: download instead of breaking
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "hiring-roast.png";
+        link.click();
+
+        alert("📥 Image saved. Now go post it before you chicken out.");
       }
-
-      // 💻 Fallback: Copy link
-      await navigator.clipboard.writeText(window.location.href);
-      setCopyMessage("🔗 Link copied! Screenshot and post it 😎");
-
-      setTimeout(() => setCopyMessage(""), 3000);
-    } catch (error) {
-      alert("Sharing failed... just screenshot it and cry 😂");
+    } catch (err) {
+      console.error(err);
+      alert("Sharing failed — screenshot it like it's 2009 📸");
+    } finally {
+      setShareLoading(false);
     }
   };
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white text-xl font-semibold">
-        🔥 Generating your roast... brace yourself.
+        Roasting your hiring strategy… brace yourself. 🔥
       </div>
     );
   }
@@ -88,20 +96,21 @@ export default function RoastPage() {
         ref={cardRef}
         className="w-full max-w-2xl bg-white p-10 rounded-2xl shadow-lg text-center"
       >
-        <h1 className="text-3xl font-bold mb-4">🔥 Your Personalized Roast</h1>
+        <h1 className="text-3xl font-bold mb-5">🔥 Your Personalized Roast</h1>
+        <p className="text-lg text-gray-800 leading-relaxed whitespace-pre-line">
+          {roast}
+        </p>
+      </div>
 
-        <p className="text-lg text-gray-700 mb-8 leading-relaxed">{roast}</p>
-
+      {/* ACTIONS */}
+      <div className="w-full max-w-2xl mt-6 space-y-4">
         <button
           onClick={shareRoast}
-          className="w-full bg-yellow-500 text-black py-3 text-lg font-semibold rounded-lg hover:bg-yellow-600 transition mb-4"
+          disabled={shareLoading}
+          className="w-full bg-yellow-500 text-black py-3 text-lg font-semibold rounded-lg hover:bg-yellow-600 transition disabled:opacity-60"
         >
-          📣 Share My Roast
+          {shareLoading ? "Generating… 📷" : "📣 Share My Roast"}
         </button>
-
-        {copyMessage && (
-          <p className="text-sm text-green-500 mb-3">{copyMessage}</p>
-        )}
 
         <button
           onClick={() => router.push("/signup")}

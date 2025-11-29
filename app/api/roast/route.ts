@@ -20,8 +20,6 @@ Format the output EXACTLY like this:
 
 ---
 
- **Your Roast**
-
 [2–3 sentences of unhinged humor, tailored to their answers. Drag resume-only screening, slow hiring, ghosting, vibe-based decisions, grammar-police rejection, and inconsistency if relevant.]
 
 ---
@@ -30,20 +28,21 @@ Format the output EXACTLY like this:
 [2 sentences. Explain that modern hiring feels confusing, slow, biased, and exhausting for both candidates & employers.]
 
 ---
- **Why FairHire Exists**
+ Why FairHire Exists
 
 [2–3 sentences. Explain that FairHire makes hiring skill-based, faster, transparent, and auditable — no vibe hiring, no guesswork. It helps teams evaluate real ability, not formatting or charm.]
 
 ---
- **Final Sip**
+ Final Sip
 
 [One short mic-drop line. Example: "Your hiring era ends today. Let's do better."]
 
 ---
 
 Rules:
-- make it gen z coded and social coded, or even meme coded 
+- make it gen z coded and social media coded, or even meme coded 
 - Must sound human, not robotic.
+- Be aware of the context
 
 `;
 

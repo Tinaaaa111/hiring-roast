@@ -45,6 +45,7 @@ FORMAT THE OUTPUT LIKE THIS:
 
    Vibe Check (1 sentence)
 - An immediate, disrespectfully accurate read of their hiring style.
+- genz and meme coded funny
 - Should feel like a psychic dragging them.
 - like how you'd roast a friend with no filter
 Example tone:
@@ -55,7 +56,7 @@ Example tone:
 Each must be:
 - 1 short sentence
 - Punchy
-- Roasting a *different* part of hiring (skills test, interviews, resumes, feedback, speed, ghosting, culture fit, etc.)
+- Roasting a *different* part of hiring
 - Based on their answers where possible — otherwise based on common hiring dysfunction.
 
 Example tone:
@@ -80,11 +81,10 @@ We evaluate skills fairly, clearly, and with accountability.
 Hiring should make sense. With FairHire, it finally does.”
 
 
-Formatting Rules:
-✔️ Bold section titles  
-✔️ Spacing for readability  
-✔️ No giant paragraphs  
-✔️ Keep it looking like a LinkedIn post someone would screenshot
+Formatting Rules:  
+ Spacing for readability  
+ No giant paragraphs  
+ Keep it looking like a LinkedIn post someone would screenshot
 
 `;
 

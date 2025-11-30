@@ -20,12 +20,12 @@ User's answers to roast:
 ${JSON.stringify(answers, null, 2)}
 
 Tone:
-- Be creative with the jokes 
+- Be creative with the jokes, use different jokes dont be so repetative 
 - chaotic but clever
 - Gen-Z meme energy
 - workplace-safe but painfully honest
 - short, punchy, screenshot-worthy one-liners
-- you can use bro but dont use sis
+- you can use bro only at times, dont use it too much but dont use sis
 
 Dont use **, - in sentence structuring 
 

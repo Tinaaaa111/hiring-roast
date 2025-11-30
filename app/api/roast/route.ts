@@ -25,7 +25,7 @@ Tone:
 - workplace-safe but painfully honest
 - short, punchy, screenshot-worthy one-liners
 
-FORMAT OUTPUT USING HTML ONLY:
+
 
 Vibe Check
 One savage one-liner summarizing their overall hiring energy based on the answers.

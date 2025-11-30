@@ -20,15 +20,17 @@ User's answers to roast:
 ${JSON.stringify(answers, null, 2)}
 
 Tone:
+- Be creative with the jokes 
 - chaotic but clever
 - Gen-Z meme energy
 - workplace-safe but painfully honest
 - short, punchy, screenshot-worthy one-liners
+- you can use bro but dont use sis
 
-
+Dont use **, - in sentence structuring 
 
 Vibe Check
-One savage one-liner summarizing their overall hiring energy based on the answers.
+One savage one-liner summarizing their overall hiring energy based on the answers. Make it so unihinged and funny. 
 
 Since You Answered Like That…
 
